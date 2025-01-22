@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commercial Lines Contacts</title>
+    <style>
+        /* Basic styling for body and font */
+        body { font-family: Arial, sans-serif; }
+        
+        /* Styling for search bar */
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Remove default list styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        /* Styling for each list item */
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Styling for hyperlinks */
+        a {
+            text-decoration: none;
+            color: #0078D4;
+        }
+    </style>
+    <script>
+        // List of links from Excel file
+const links = [
+    { title: "Certificate Info", url: "\\\\SihleData\\FDrive\\Company Shared Folders\\Certificate Department" },
+    { title: "CSR24 Client Access Portal", url: "https://portal.csr24.com/mvc/3893522" },
+    { title: "indio - The modern app and renewal process", url: "https://sihle.useindio.com/" },
+    { title: "MVR Request", url: "https://www.sihle.com/mvr/" },
+    { title: "Text Messaging via Podium", url: "https://app.podium.com/" },
+    { title: "Download Comm Logs", url: "\\\\SihleData-2019\\FDrive\\Company Shared Folders\\Comm Logs" },
+    { title: "Suspense Download Comm Logs", url: "\\\\SihleData\\FDrive\\Company Shared Folders\\Comm Logs (Download Suspense)" },
+    { title: "BROKER - 5 Star Specialty Programs", url: "http://www.5starsp.com/" },
+    { title: "BROKER - Coastal Insurance Underwriters", url: "http://www.ciuins.com/" },
+    { title: "BROKER - Distinguished Programs Group", url: "http://www.distinguished.com/" },
+    { title: "BROKER - FHBI Florida Home Builders", url: "http://www.fhbia.com/" },
+    { title: "BROKER - Firstlight Program Managers", url: "http://www.firstlightprograms.com/" },
+    { title: "BROKER - Gresham & Associates", url: "http://gresham-inc.com/" },
+    { title: "BROKER - Harp Umbrella", url: "https://trivedi.pdspectrum.com/PAS/Login.aspx?ReturnUrl=%2fPAS%2fMain%2fSpectrumExplorer.aspx" },
+    { title: "BROKER - Hull & Company", url: "http://www.hullco.com/" },
+    { title: "BROKER - ICAT International Catastrophe", url: "http://www.icat.com/" },
+    { title: "BROKER - IMPG – Quote Hiscox", url: "https://www.hiscox.com/partner-agent/ipmg" },
+    { title: "BROKER - Irvin B. Green & Associates", url: "http://www.ibgreen.com/" },
+    { title: "BROKER - Kevin Davis Insurance Sves", url: "http://www.kdisonline.com/index.html" },
+    { title: "BROKER - Lawyer's Protector Plan®", url: "http://lawyers.protectorplan.com/" },
+    { title: "BROKER - Macneill Group", url: "https://www.macneillgroup.com/" },
+    { title: "BROKER - Maximin", url: "https://maxib.com/privacy-statement/" },
+    { title: "BROKER - Monitor Liability Manager", url: "http://www.monitorliability.com/" },
+    { title: "BROKER - Preferred Property Risk Group", url: "http://www.ppp-quotes.com/" },
+    { title: "BROKER - Southern Insurance Underwriters", url: "http://www.siuins.com/content/public/default.aspx" },
+    { title: "BROKER - THOMCO Insurance Enterprises", url: "http://www.thomcoins.com/index.cfm" },
+    { title: "BROKER - Umbrella Pro Quoting", url: "https://www.umbrellapro.com/Login.aspx?redir=%2fMembers%2fAFI%2fRealEstate%2fV5-0%2fUnderlyingInsurance.aspx%3fApplicationID%3d142529" },
+    { title: "BROKER - Unisource Administrators", url: "http://www.unisourcepa.com/" },
+    { title: "CARRIER - Abacus", url: "http://www.abacus.net/" },
+    { title: "CARRIER - Accident Ins Co.", url: "https://agency-connection.com/CommonLogin/" },
+    { title: "CARRIER - AIG Excess", url: "https://www-1p.aig.com/login" },
+    { title: "CARRIER - Allied Insurance", url: "https://agentcenter.nationwide.com/WorkspaceAC/login" },
+    { title: "CARRIER - Allstate", url: "https://agencygateway1.allstate.com/eaiSSL/EAIWeb/EAIServlet?OrigURL=https%3A//myconnection1.allstate.com/IA/" },
+    { title: "CARRIER - Amcap Insurance", url: "https://agencyportal.amcapins.com/" },
+    { title: "CARRIER - Amelia Underwriters", url: "http://swelker@ameliaunderwriters.com" },
+    { title: "CARRIER - Amerisafe", url: "https://geaux.amerisafe.com/agent.html" },
+    { title: "CARRIER - AmTrust Financial", url: "http://www.amtrustgroup.com/" },
+    { title: "CARRIER - Ascendant Insurance", url: "http://www.acicompanies.com/" },
+    { title: "CARRIER - ASI - American Strategic", url: "http://www.americanstrategic.com/" },
+    { title: "CARRIER - Assurant Flood", url: "https://assurantfloodport.com/assurantagency/FloodHome.jhtml" },
+    { title: "CARRIER - Attune", url: "https://www.attuneinsurance.com/" },
+    { title: "CARRIER - Bankers Insurance Group", url: "http://www.bankersinsurance.com/" },
+    { title: "CARRIER - Berkshire Hathaway GUARD", url: "https://gigezrate.guard.com/comm/asclogin/agents.htm" },
+    { title: "CARRIER - Berkshire Hathaway HOMESTATES", url: "http://www.bhhc.com/" },
+    { title: "CARRIER - Bitco Insurance", url: "https://portal.bitco.com/" },
+    { title: "CARRIER - Bristol West", url: "https://www.iaproducers.com/Producers/FMLogin.aspx?ReturnUrl=/Producers/" },
+    { title: "CARRIER - Builders Insurance Group", url: "https://bol.bldrs.com/Account/Login?ReturnUrl=%2f" },
+    { title: "CARRIER - Builders Mutual", url: "https://www.buildersmutual.com/agents/" },
+    { title: "CARRIER - Canal Insurance", url: "http://canalinsurance.com/" },
+    { title: "CARRIER - Chubb Group", url: "https://agentview.chubb.com/" },
+    { title: "CARRIER - Cincinnati Financial Corporation", url: "http://www.cinfin.com/" },
+    { title: "CARRIER - Citizen's Property Insurance", url: "https://www.citizensfla.com/" },
+    { title: "CARRIER - Citizens Rating", url: "https://turbostorm.itcratingservices.com/" },
+    { title: "CARRIER - CNA Central", url: "https://www.cna.com/web/guest/cna/agentcenterpublic/!ut/p/b1/hc9LboMwEIDhs-QAkQeweSwdBBQ7BFRjEtggWqWI8DApLak4fYnaRTdtZzfSp_k1qEAnVAzV3NTVW6OGqrvvhVli4DzdY6kzwyBA4wCwduA6Tix0XEm-EvhlKPx_ofgiNnYlFXbopdQBanOd-ZoOEBvf4I9EvgLrR0S494glQ0vzDBAmygb12q__pOgEuBQXGK" },
+    { title: "CARRIER - CNA Surety", url: "http://www.cnasurety.com/" },
+    { title: "CARRIER - Crum & Forster", url: "https://cfconnect.cfins.com/" },
+    { title: "CARRIER - Employers Insurance", url: "https://www.employers.com/index" },
+    { title: "CARRIER – FCBI", url: "http://www.fcbifund.com/" },
+    { title: "CARRIER - FCCI Insurance Group", url: "http://www.fcci-group.com/" },
+    { title: "CARRIER - FFVA Mutual Insurance Co.", url: "https://www.ffvamutual.com/" },
+    { title: "CARRIER - FHM Insurance Company", url: "http://www.fhmic.com/" },
+    { title: "CARRIER - Fireman's Fund Insurance", url: "https://agent-desktop.firemansfund.com/" },
+    { title: "CARRIER - First Home Ins - Flood", url: "http://firsthome.torrentflood.com/" },
+    { title: "CARRIER - Foremost Producers", url: "https://www.foremost.com/" },
+    { title: "CARRIER - FPIC Insurance Group", url: "http://www.fpic.com/" },
+    { title: "CARRIER - Frank Winston Crum", url: "https://www.fwcruminsurance.com/" },
+    { title: "CARRIER - Frontline Insurance", url: "https://gateway.frontlineinsurance.com/" },
+    { title: "CARRIER - FUBA", url: "https://fubaworks.com/Agents/Account/Login?ReturnUrl=%2FAgents%2FDashboard" },
+    { title: "CARRIER - FWCJUA - Florida Worker's Comp", url: "http://www.fwcjua.com/" },
+    { title: "CARRIER - GMAC Insurance / National General", url: "https://www.natgenagency.com/" },
+    { title: "CARRIER - Graham Insurance Group - gigins.com", url: "https://www.gigins.com/online-quoting/" },
+    { title: "CARRIER - Gramercy Insurance", url: "http://www.gramercyinsurance.com/" },
+    { title: "CARRIER - Great American", url: "https://agentportal.gaig.com/siteminderagent/forms/AP-Login/partners_login.fcc?TYPE=33554433&REALMOID=06-000afe06-dc5c-1a01-9af6-503d0a324007&GUID=&SMAUTHREASON=0&METHOD=GET&SMAGENTNAME=-SM-ued1pSWn%2b5imublfc3DFomsvyrAzA8vtw01g0S%2f3K9bFHhShGiK5DmhBheWGq" },
+    { title: "CARRIER - Guarantee Insurance Company", url: "http://www.guaranteeins.com/" },
+    { title: "CARRIER – GuideOne", url: "https://www.guideone.com/" },
+    { title: "CARRIER - Hanover Insurance Group", url: "http://tap.hanover.com/" },
+    { title: "CARRIER - Hartford (EBC Login)", url: "https://ebc.thehartford.com/forms/ebc1.fcc?TYPE=33554433&REALMOID=06-3acdad77-869f-00fe-0000-29c8000029c8&GUID=&SMAUTHREASON=0&TARGET=https://ebc.thehartford.com/ebc/cl/navigation/StartEbc.jsp" },
+    { title: "CARRIER - Hartford Bond", url: "http://www.1stepsurety.com/" },
+    { title: "CARRIER - Hartford Flood", url: "https://www.hartfordfloodonline.com/Membership/SignIn" },
+    { title: "CARRIER - Hartford Steam Boiler", url: "http://www.hsb.com/HSBGroup" },
+    { title: "CARRIER - ICW Group", url: "https://agentportal.icwgroup.com/login" },
+    { title: "CARRIER - Infinity OneLink Express", url: "http://www.infinityagents.com/" },
+    { title: "CARRIER - Insco-Dico Group Surety Bonds", url: "http://www.inscodico.com/suretybonds8.html" },
+    { title: "CARRIER - Kemper", url: "http://agentportal.kemper.com/" },
+    { title: "CARRIER - Liberty Mutual", url: "https://agent.libertymutual.com/start" },
+    { title: "CARRIER - Main Street America Group", url: "https://agentsonly.msagroup.com/agentsonly/" },
+    { title: "CARRIER - MAPFRE Florida", url: "http://www.mapfreflorida.com/MapfrePortal/Layout3.aspx" },
+    { title: "CARRIER - Markel Commercial", url: "https://www.markelinsurance.com/firstcomp/" },
+    { title: "CARRIER - Markel Corporation", url: "http://www.markelcorp.com/" },
+    { title: "CARRIER - Mecury First", url: "https://www.mercuryfirst.com/" },
+    { title: "CARRIER - MEMIC", url: "https://quickcomp.memic.com/Login.aspx?CD=session" },
+    { title: "CARRIER - Method Insurance", url: "https://portal2018.nexsure.com/Login?key=4933AED44DAA4ABD1104856B" },
+    { title: "CARRIER - MetLife Business Insurance", url: "https://www.metlifebusinessinsurance.com/" },
+    { title: "CARRIER - MGA Live", url: "https://www.mgalive.com/" },
+    { title: "CARRIER - Michigan Commercial Ins Mutual", url: "http://www.mcim.com/" },
+    { title: "CARRIER - Mid-Continent Group", url: "https://mcgagents.mcg-ins.com/Account/Login?ReturnUrl=%2f" },
+    { title: "CARRIER – National General", url: "https://www.natgenagency.com/" },
+    { title: "CARRIER - National Indemnity Company", url: "http://nationalindemnity.com/" },
+    { title: "CARRIER - Nationwide – Harleysville", url: "https://portal.harleysvillegroup.com/login.aspx" },
+    { title: "CARRIER - Nationwide Insurance", url: "https://agentcenter.nationwide.com/WorkspaceAC/login" },
+    { title: "CARRIER - Normandy Insurance", url: "https://quoting.normandyins.com/" },
+    { title: "CARRIER - North Pointe Insurance Company", url: "http://www.npic.com/index.htm" },
+    { title: "CARRIER - Northern Capital Insurance", url: "https://www.northerncapitalinsurance-systems.net/" },
+    { title: "CARRIER - Northland Insurance", url: "http://www.northlandins.com/" },
+    { title: "CARRIER - Old Dominion Flood", url: "https://www.floodpro.net/" },
+    { title: "CARRIER - Old Dominion Flood (New)", url: "https://ngm.agent.odysseynext.com/login" },
+    { title: "CARRIER - PBOA", url: "http://www.pboa.com/" },
+    { title: "CARRIER - Pennsylvania Lumbermens", url: "https://portal.plmins.com/Account/Login?ReturnUrl=%2FCustomer%2FPortalHome" },
+    { title: "CARRIER - Philadelphia Insurance Companies", url: "https://www.phly.com/" },
+    { title: "CARRIER - Pie Insurance", url: "https://partner.pieinsurance.com/sign-in/" },
+    { title: "CARRIER - Progressive Insurance", url: "https://www.foragentsonly.com/" },
+    { title: "CARRIER - RCA Insurance Company", url: "http://www.rca-insurance.com/" },
+    { title: "CARRIER - SAFECO (Plaza Online Logon)", url: "https://safesite.safeco.com/dpec/signin.asp?OriginalURL=/safeconow/personal_insurance/" },
+    { title: "CARRIER - Scottsdale Insurance Company", url: "https://portal.web.scottsdaleins.com/web/public/" },
+    { title: "CARRIER – Semsee Online Rater", url: "https://semsee.com/" },
+    { title: "CARRIER - Service Insurance Company", url: "http://www.serviceinsuranceco.com/" },
+    { title: "CARRIER - Summit Holdings", url: "http://www.summitholdings.com/" },
+    { title: "CARRIER - Texas Mutual Insurance", url: "http://texasmutual.com/" },
+    { title: "CARRIER – Tower Hill", url: "https://www.thig.com/" },
+    { title: "CARRIER - Travelers", url: "http://www.stpaultravelers.com/agents/index.html" },
+    { title: "CARRIER - Travelers (Logon)", url: "https://logon.travelers.com/" },
+    { title: "CARRIER - Travelers Flood (Logon)", url: "https://www.travelersflood.com/" },
+    { title: "CARRIER - Umbrella Pro", url: "https://www.umbrellapro.com/Login.aspx?redir=%2fMembers%2fAFI%2fConstruction%2fV2-0%2fUnderlyingInsurance.aspx%3fApplicationID%3d85047" },
+    { title: "CARRIER - United Heartland", url: "https://www.unitedheartland.biz/opensso/UI/Login?goto=https://www.unitedheartland.biz/afFedPortal/appmanager/uh/desktop&br=uh" },
+    { title: "CARRIER - USLI", url: "http://www.usli.com/" },
+    { title: "CARRIER - Victoria Insurance", url: "http://www.victoriainsurance.com/" },
+    { title: "CARRIER - Westfield Group", url: "https://agent.westfieldinsurance.com/" },
+    { title: "CARRIER - Weston", url: "http://www.weston-ins.com/" },
+    { title: "CARRIER - Wright Flood", url: "https://www.wrightflood.net/Portal/" },
+    { title: "CARRIER - Zenith & Zenith Connection", url: "http://www.thezenith.com/index.html" },
+    { title: "CARRIER - ZIS US Assure", url: "http://zis.usassure.com/zis/agents" },
+    { title: "FINANCIAL - AFCO Ins Premium Financing", url: "http://www.afco.com/" },
+    { title: "FINANCIAL - Best's Ratings", url: "http://www.ambest.com/" },
+    { title: "FINANCIAL - Comp Edge", url: "http://www.compedge.com/" },
+    { title: "FINANCIAL - Imperial Finance", url: "https://www.ipfs.com/ForAgents" },
+    { title: "FINANCIAL - Kelley Blue Book", url: "http://www.kbb.com/" },
+    { title: "FINANCIAL - PacPlus.Net", url: "https://www.pacplus.net/webFrmLogin.aspx?ReturnUrl=%2fwebfrmmain.aspx" },
+    { title: "FINANCIAL - Premium Assignment Corp", url: "http://www.premiumassignment.com/" },
+    { title: "FINANCIAL - Standard & Poors", url: "http://www2.standardandpoors.com/portal/site/sp/en/us/page.home/home/0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0,,0.html" },
+    { title: "FINANCIAL - Westfield Bank", url: "https://www.pbsnetaccess.com/entitylogin/?portfolio=wfb" },
+    { title: "MISC - Applied Training", url: "http://us.appliedsystems.com/" },
+    { title: "MISC - Area Code Database", url: "http://www.localcallingguide.com/" },
+    { title: "MISC - FAIA Florida Association of Ins Agents", url: "http://www.faia.com/" },
+    { title: "MISC - FEMA Federal Emrgncy Mgmt Agency", url: "http://www.fema.gov/" },
+    { title: "MISC - Florida Office of Insurance Regulation", url: "http://www.floir.com/CompanySearch/" },
+    { title: "MISC - Google", url: "http://www.google.com/" },
+    { title: "MISC - Government Printing Office", url: "http://www.gpoaccess.gov/" },
+    { title: "MISC - Hurricane Forcast Models", url: "http://derecho.math.uwm.edu/models/" },
+    { title: "MISC - InsuranceMarketplace.com (Search)", url: "http://www.insurancemarketplace.com/default.aspx" },
+    { title: "MISC - InsuranceSurf.com (Market Search)", url: "http://www.insurancesurf.com/links/pandc.cfm" },
+    { title: "MISC - InsWebhound.com (Market Search)", url: "http://www.iwebhound.com/" },
+    { title: "MISC - IPOGO Ins Profes of Greater Orlando", url: "http://www.ipogofl.org/" },
+    { title: "MISC - ISOnet", url: "http://info.iso.com/" },
+    { title: "MISC - MapRisk - Measure distance to the water", url: "http://www.maprisk.com/" },
+    { title: "MISC - ModMaster", url: "https://agencyfuel.zywave.com/AgencyFuel.aspx" },
+    { title: "MISC - Naval Oceanography Portal", url: "http://www.nlmoc.navy.mil/" },
+    { title: "MISC - NCCI Riskworkstation", url: "https://www.ncci.com/nccimain/Pages/Default.aspx" },
+    { title: "MISC - NOAA Home Page", url: "http://www.noaa.com/" },
+    { title: "MISC - SAFER (Federal Motor Carrier Safety)", url: "http://www.safersys.org/CompanySnapshot.aspx" },
+    { title: "MISC - SIC Code Search", url: "http://www.naics.com/search.htm" },
+    { title: "MISC - SilverPlume", url: "https://www.referenceconnect.com/SPOnline/Login.aspx?ReturnUrl=%2fSPOnline%2fSPSage.aspx" },
+    { title: "MISC - Social Security Online", url: "http://www.ssa.gov/" },
+    { title: "MISC - Total CSR", url: "https://login.totalcsr.com/" },
+    { title: "MISC - Tropical Satellite Imagery", url: "http://www.srh.noaa.gov/srh/tropicalwx/satellite.php" },
+    { title: "MISC - United Self Insured Services", url: "http://www.usis-tpa.com/" },
+    { title: "MISC - UPS Speedship.com (Shipping Manager)", url: "" },
+    { title: "MISC - USPS ZIP Code (Lookup)", url: "http://zip4.usps.com/zip4/welcome.jsp" },
+    { title: "MISC - VIN Decoder", url: "https://www.searchquarry.com/vin-decoder/" },
+    { title: "MISC - Virginia Workers Comp Commission", url: "http://www.vwc.state.va.us/insurance.htm" },
+    { title: "MISC - WorkersCompensation.com", url: "http://www.workerscompensation.com/" },
+    { title: "PROPERTY - Appraiser (All in Florida)", url: "http://dor.myflorida.com/dor/property/appraisers.html" },
+    { title: "PROPERTY - Appraiser (Brevard)", url: "https://www.bcpao.us/" },
+    { title: "PROPERTY - Appraiser (Broward)", url: "http://www.bcpa.net/" },
+    { title: "PROPERTY - Appraiser (Charlotte)", url: "https://ccappraiser.com/" },
+    { title: "PROPERTY - Appraiser (Duval)", url: "https://paopropertysearch.coj.net/Basic/Search.aspx" },
+    { title: "PROPERTY - Appraiser (Flagler)", url: "http://flaglerpa.com/" },
+    { title: "PROPERTY - Appraiser (Hillsborough)", url: "http://www.hcpafl.org/" },
+    { title: "PROPERTY - Appraiser (Lake)", url: "http://www.lakecopropappr.com/" },
+    { title: "PROPERTY - Appraiser (Lee)", url: "http://www.leepa.org/" },
+    { title: "PROPERTY - Appraiser (Orange)", url: "http://www.ocpafl.org/" },
+    { title: "PROPERTY - Appraiser (Osceola)", url: "http://www.property-appraiser.org/" },
+    { title: "PROPERTY - Appraiser (Pinellas)", url: "http://www.pcpao.org/" },
+    { title: "PROPERTY - Appraiser (Polk)", url: "http://www.polkpa.org/" },
+    { title: "PROPERTY - Appraiser (Seminole)", url: "http://www.scpafl.org/" },
+    { title: "PROPERTY - Appraiser (St. Lucie)", url: "http://www.paslc.org/main-realestate.asp" },
+    { title: "PROPERTY - Appraiser (Volusia)", url: "https://vcpa.vcgov.org/" },
+    { title: "PROPERTY - Florida Counties Map", url: "http://www.floridacountiesmap.com/" },
+    { title: "PROPERTY - PropertyAppraiser.com", url: "http://www.propertyappraiser.com/" },
+    { title: "PROPERTY - RiskMeter.com  (Mapping Risk)", url: "http://www.riskmeter.com/RiskMeter/index.html" },
+    { title: "STATE of FL - Authorized Ins Companies & DMV Codes", url: "http://www.floir.com/companysearch/" },
+    { title: "STATE of FL - Claims Database", url: "https://apps.fldfs.com/claimsweb/ClaimSearch.aspx" },
+    { title: "STATE of FL - Dept of Corrections", url: "http://www.dc.state.fl.us/InmateInfo/InmateInfoMenu.asp" },
+    { title: "STATE of FL - DFS Agent Compliance", url: "https://aalf.fldfs.com/common/com_index.asp" },
+    { title: "STATE of FL - DFS Home Page", url: "http://www.fldfs.com/" },
+    { title: "STATE of FL - Division of Corporations", url: "http://www.sunbiz.org/" },
+    { title: "STATE of FL - Driver License Check", url: "https://www6.hsmv.state.fl.us/DLCheck/main.jsp" },
+    { title: "STATE of FL - Florida Surplus Lines", url: "http://www.fslso.com/Estimate/Estimator" },
+    { title: "STATE of FL - Florida Surplus Lines Tax Calculator", url: "http://www.fslso.com/tools/calculator.aspx" },
+    { title: "STATE of FL - GC License Check", url: "https://www.myfloridalicense.com/wl11.asp?mode=0&SID" },
+    { title: "STATE of FL - MVR Password Reset", url: "https://www.webmvr.com/login/ForgotPassword.jsp" },
+    { title: "STATE of FL - Notary Service", url: "http://www.floridanotaryservice.com/" },
+    { title: "STATE of FL - Unique ID Driver's License FL", url: "http://www.highprogrammer.com/cgi-bin/uniqueid/dl_fl" },
+    { title: "STATE of FL - WC Coverage Assistance Program", url: "https://minimarket.fldfs.com/" },
+    { title: "STATE of FL - Work Comp Admin Hearings", url: "http://www.jcc.state.fl.us/jcc/" },
+    { title: "STATE of FL - Work Comp Claims Loss Run", url: "https://apps.fldfs.com/lossrunsweb/logon.aspx" },
+    { title: "STATE of FL - Work Comp Coverage Proof", url: "https://dwcdataportal.fldfs.com/ProofOfCoverage.aspx" },
+    { title: "STATE of FL - Work Comp Database List", url: "https://dwcdataportal.fldfs.com/POCData.aspx" }
+];
+
+
+        
+        // Function to load the links into the page dynamically
+        function loadLinks() {
+            let linkList = document.getElementById('linkList');
+            linkList.innerHTML = ""; // Clear existing list
+            
+            links.forEach(link => {
+                let li = document.createElement('li');
+                let a = document.createElement('a');
+                a.href = link.url;
+                a.target = "_blank";
+                a.textContent = link.title;
+                li.appendChild(a);
+                linkList.appendChild(li);
+            });
+        }
+        
+        // Function to filter links dynamically as user types
+        function filterLinks() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let listItems = document.getElementById('linkList').getElementsByTagName('li');
+            
+            for (let i = 0; i < listItems.length; i++) {
+                let text = listItems[i].textContent || listItems[i].innerText;
+                listItems[i].style.display = text.toLowerCase().includes(input) ? '' : 'none';
+            }
+        }
+        
+        // Load links when the page loads
+        window.onload = loadLinks;
+    </script>
+</head>
+<body>
+    <!-- Search input field with event to trigger filtering -->
+    <input type="text" id="searchBar" onkeyup="filterLinks()" placeholder="Search links...">
+    
+    <!-- Unordered list to display links -->
+    <ul id="linkList"></ul>
+</body>
+</html>
