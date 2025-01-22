@@ -5,7 +5,14 @@
     <style>
         /* Basic styling for body and font */
         body { font-family: Arial, sans-serif; }
-        
+
+        /* Styling for the title */
+#linksTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+       
         /* Styling for search bar */
         #searchBar {
             width: 100%;
@@ -277,6 +284,9 @@ const links = [
     </script>
 </head>
 <body>
+        <!-- Title above the search bar -->
+    <h2 id="linksTitle">Website Links</h2>
+    
     <!-- Search input field with event to trigger filtering -->
     <input type="text" id="searchBar" onkeyup="filterLinks()" placeholder="Search links...">
     
