@@ -1,0 +1,279 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Commercial Lines Contacts</title>
+    <style>
+        /* Basic styling for body and font */
+        body { font-family: Arial, sans-serif; }
+
+        /* Styling for the title "Website Links" */
+    #linksTitle {
+    font-size: 20px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #0078d4; /* Added color property */
+}
+       
+        /* Styling for search bar */
+        #searchBar {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 10px;
+        }
+        
+        /* Remove default list styles */
+        ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        
+        /* Styling for each list item */
+        li {
+            padding: 8px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        /* Styling for hyperlinks */
+        a {
+            text-decoration: none;
+            color: #0078D4;
+        }
+    </style>
+    <script>
+        // List of links from Excel file
+		
+const links = [
+    { title: "eSignature - indio", url: "https://sihle.useindio.com/" },
+    { title: "New Business Client Lookup", url: "http://sihledata/Client-Lookup.html" },
+    { title: "Quote Request to Velocify", url: "http://www.sihle.com/velocify" },
+    { title: "Sihle Email Web Portal", url: "http://email.sihle.com/" },
+    { title: "Download Comm Logs", url: "\\\\SIHLEDATA\\FDrive\\Company Shared Folders\\Download Communication Logs" },
+    { title: "Suspense Download Comm Logs", url: "\\\\SihleData\\FDrive\\Company Shared Folders\\Comm Logs (Download Suspense)" },
+    { title: "Text Messaging via Podium", url: "https://app.podium.com/" },
+    { title: "A.M. Best Home Page", url: "http://www.ambest.com/" },
+    { title: "AAA Auto Club South", url: "https://www.autoclubfl.com/" },
+    { title: "AAA Insurance", url: "https://www.aciaagent.com/" },
+    { title: "Abacus Insurance Brokers, Inc.", url: "https://www.abacus.net/auth/?ReturnUrl=https%3a%2f%2fwww.abacus.net%2faccount%2f" },
+    { title: "AccuWeather.com!", url: "http://www.accuweather.com/" },
+    { title: "ACE Private Risk Services", url: "http://abiz.aceprivateriskservices.com/home.cfm" },
+    { title: "AIG - PC Broker", url: "https://aig-na-ciamprod1.okta.com/" },
+    { title: "All Risks", url: "https://www.allrisks.com/" },
+    { title: "Allied Insurance", url: "http://aac.alliedinsurance.com/" },
+    { title: "Allstate", url: "https://agencygateway1.allstate.com/eaiSSL/EAIWeb/EAIServlet?OrigURL=https%3A//myconnection1.allstate.com/IA/" },
+    { title: "Amelia Underwriters", url: "https://au.virtualunderwriter.net/innovare/Frameset.cfm" },
+    { title: "American Integrity Insurance Group", url: "https://www.aiicfl.com/" },
+    { title: "American Integrity Insurance Group - OLD", url: "https://www.aiicfl.net/AIHLogin.asp" },
+    { title: "American Integrity Payments", url: "http://aiicfl.com/customer-tools/make-a-payment" },
+    { title: "American Modern", url: "https://amsuite.amig.com/eidp/Authn/UserPassword" },
+    { title: "American Strategic", url: "http://www.americanstrategic.com/" },
+    { title: "American Traditions Insurance Company", url: "https://portal.jergermga.com/AgentLogin/" },
+    { title: "AmWINS", url: "https://www.amwins.com/products-services/property-casualty/personal-lines" },
+    { title: "Applied Training", url: "http://www.appliedsystems.com/media/tamtraining/home.asp" },
+    { title: "Area Code Database", url: "http://www.localcallingguide.com/" },
+    { title: "Assurant Flood / American Bankers Flood / Travelers Flood", url: "https://assurant.floodpro.net/Login.aspx" },
+    { title: "Avatar", url: "http://agent.avatarins.com/" },
+    { title: "Bankers Insurance Group", url: "https://secure4.bankersinsurance.com/login.jsp" },
+    { title: "Bass Underwriters", url: "https://app.bassuw.com/auth" },
+    { title: "Cabrillo General's Insurance", url: "http://www.cabgen.com/" },
+    { title: "Capitol Preferred Insurance Company, Inc.", url: "https://agent.capitol-preferred.com/login.aspx" },
+    { title: "Central Insurance School, Florida", url: "http://www.centralinsuranceschool.com/terminal.aspx?FP=5" },
+    { title: "ChoicePoint Link (CPLink)", url: "http://insurancesolutions.lexisnexis.com/" },
+    { title: "Chubb Group", url: "https://extpga01.chubb.com/login" },
+    { title: "Cincinnati", url: "https://cinfin.com/" },
+    { title: "Citizens Property Insurance Corporation", url: "https://cag.citizensfla.com/" },
+    { title: "Colonial Group", url: "https://tcgportal.azurewebsites.net/" },
+    { title: "Companion P&C", url: "http://ho6.enstargroup.com/cpcportal/Default.aspx" },
+    { title: "Condon & Skelly", url: "http://www.condonskelly.com/default.home" },
+    { title: "Costal Insurance", url: "https://www.ciusolutions.com/agency/Login.aspx" },
+    { title: "Cypress Insurance Company", url: "https://cypvprdwa.csc-fsg.com/AgencyLinkC.0" },
+    { title: "Cypress Insurance Company - Flood", url: "https://cypresspc.torrentflood.com/" },
+    { title: "Cypress Insurance Company - New Portal", url: "https://cypress.cogisi.com/is/root/logon/index.cfm" },
+    { title: "Dairyland", url: "https://agent.dairylandagent.com/web/login" },
+    { title: "Don Meyler Inspections", url: "http://www.dmiaccess.com/agent/signup" },
+    { title: "Driver License Check", url: "https://services.flhsmv.gov/dlcheck/" },
+    { title: "EchoSign", url: "http://www.echosign.com/" },
+    { title: "Edison Insurance Company", url: "http://www.edisoninsurance.com/" },
+    { title: "Elements Property Insurance", url: "https://www.epicipx.com/production/main/PISignIn.aspx?ReturnUrl=PIMain.aspx" },
+    { title: "Encompass", url: "https://login.allstate.com/auth/login" },
+    { title: "Express Insurance Info Dot Com", url: "https://expressinsuranceinfo.com/" },
+    { title: "EZLynx - Home", url: "http://www.ezlynx.com/" },
+    { title: "FAIA", url: "https://www.faia.com/" },
+    { title: "Federated National", url: "https://agents.fednat.com/" },
+    { title: "Fed-Nat", url: "http://www.fednat.com/" },
+    { title: "FEMA Federal Emergency Management Agency", url: "http://www.fema.gov/" },
+    { title: "Fireman's Fund", url: "http://www.firemansfund.com/" },
+    { title: "First Home Insurance", url: "https://www.firsthomeins.com/AGENTS/PROD/login.aspx?ReturnUrl=%2fagents%2fprod%2fDefault.aspx" },
+    { title: "First Home Insurance - Training", url: "https://www.firsthomeins.com/AGENTS/TRAINING/login.aspx?ReturnUrl=%2fAGENTS%2ftraining%2fDefault.aspx" },
+    { title: "Flood Risk Solutions", url: "http://www.floodsol.com/auth/login" },
+    { title: "Florida Department of Insurance", url: "http://www.fldfs.com/" },
+    { title: "Florida Family Insurance", url: "https://agent.floridafamily.com/content/login.aspx" },
+    { title: "Florida Family Insurance - Flood", url: "https://flfamily.torrentflood.com/Flood/Membership/SignIn/?ReturnUrl=/" },
+    { title: "Florida Peninsula Insurance Company", url: "https://www.floridapeninsula.com/Your-Account?returnurl=%2fAgent" },
+    { title: "Florida Specialty", url: "http://www.floridaspecialty.com/" },
+    { title: "Florida Statutes", url: "http://www.leg.state.fl.us/Statutes/" },
+    { title: "Foremost Auto", url: "https://www.iaproducers.com/Producers/FMLogin.aspx?ReturnUrl=/Producers/default.aspx" },
+    { title: "ForemostSTAR", url: "https://www.agentautohome.com/public/agent" },
+    { title: "Frontline Insurance Company - NEW", url: "http://gateway.frontlineinsurance.com/" },
+    { title: "Frontline Insurance Company - OLD", url: "https://pos2.frontline-mga.net/login.action" },
+    { title: "Gainsco", url: "http://www.gainsco.com/?q=agents" },
+	{ title: "GeoVera", url: "http://mygeosource.com/" },
+    { title: "GulfStream", url: "https://www.gspcic.com/" },
+    { title: "Hagerty Insurance", url: "http://www.hagerty.com/" },
+    { title: "Hanover", url: "https://tap.allmerica.com/wps/myportal/tap" },
+    { title: "Hartford EBC Login", url: "https://ebc.thehartford.com/forms/ebc1.fcc?TYPE=33554433&REALMOID=06-3acdad77-869f-00fe-0000-29c8000029c8&GUID=&SMAUTHREASON=0&TARGET=https://ebc.thehartford.com/ebc/cl/navigation/StartEbc.jsp" },
+    { title: "Heritage Newest Portal", url: "https://hrtgagents.com/" },
+    { title: "Heritage Old Westpoint", url: "https://www.heritagepci.net/HOME_Login.asp" },
+    { title: "Homeowners Choice", url: "https://portal.hcpci.com/Login.aspx?ReturnUrl=%2fDefault.aspx" },
+    { title: "HomeWise Insurance Agent Portal", url: "http://www.homewiseinsco.com/" },
+    { title: "Hull & Company (Geovera)", url: "https://www.mygeosource.com/" },
+    { title: "Hurricane Forcast Models", url: "http://derecho.math.uwm.edu/models/" },
+    { title: "I Am Covered Dot Com", url: "https://imcovered.com/agent" },
+    { title: "I Have Insurance Dot Com", url: "https://ihaveinsurance.com/mortgage" },
+    { title: "ICAT", url: "https://producer.icat.com/icatsss/login" },
+    { title: "Imperial PFS - Premium financing", url: "https://www.ipfs.com/" },
+    { title: "Indio", url: "https://sihle.useindio.com/" },
+    { title: "Insurance Service Center", url: "https://www.insuranceservicecenter.com/" },
+    { title: "Irvin B. Green & Associates, Inc.", url: "http://www.ibgreen.com/" },
+    { title: "ISOnet", url: "http://info.iso.com/" },
+    { title: "Jacksonville - Fire Hydrant Proximity", url: "http://maps.coj.net/hydrantproximity/" },
+    { title: "Johnson & Johnson", url: "https://www.jjins.com/home/" },
+    { title: "Kelley Blue Book", url: "http://www.kbb.com/" },
+    { title: "Kemper", url: "https://agentportal.kemper.com/" },
+    { title: "Lexus Nexis", url: "https://insurancesolutions.lexisnexis.com/" },
+    { title: "Lighthouse Property Insurance", url: "https://www.lighthouse.insurance/agent-login/" },
+    { title: "MacNeill Spinnaker", url: "https://mcd.policyport.com/cms/login/" },
+    { title: "Mapfre Connect", url: "https://www.mapfreconnect.com/agent/login" },
+    { title: "Mapfre Insurance Co.", url: "http://www.mapfreflorida.com/mapfreportal/Layout3.aspx" },
+    { title: "Mercury Insurance Group", url: "https://rtrpc.mercuryinsurance.com/pc/PolicyCenter.do" },
+    { title: "Mercury Insurance Group - OLD", url: "https://www.mercuryfirst.com/login/home.do" },
+    { title: "MetLife Agent Resource Site", url: "https://portal.agentars.com/public/default.jsp" },
+    { title: "Microsoft Maps", url: "http://www.bing.com/maps/" },
+    { title: "Millennium Info Services (FFL inspection serv)", url: "https://clientaccess.millinfo.com/" },
+    { title: "Monarch/Fed Nat Insurance", url: "https://agents.monarchnational.com/login" },
+    { title: "Mount Beacon Insurance", url: "http://mountbeaconins.net/HOME_Login.asp" },
+    { title: "MVR Password Reset", url: "https://www.webmvr.com/login/ForgotPassword.jsp" },
+    { title: "My Coverage Info – Mortgage Lookup", url: "https://mycoverageinfo.com/AGENT" },
+    { title: "My Insurance Info Dot Com", url: "https://www.myinsuranceinfo.com/no-reference-id/" },
+    { title: "MyMGA.com", url: "https://www.mymga.com/" },
+    { title: "National Flood Services, Inc.", url: "https://www.nationalfloodservices.com/" },
+    { title: "National General Insurance", url: "https://natgenagency.com/" },
+    { title: "Nationwide / Allied Insurance", url: "https://agentcenter.nationwide.com/WorkspaceAC/login" },
+    { title: "Naval Oceanography Portal", url: "http://www.nlmoc.navy.mil/" },
+    { title: "Neptune Flood", url: "https://neptuneflood.com/agent-hub" },
+    { title: "NOAA Home Page", url: "http://www.noaa.com/" },
+    { title: "Old Dominion Flood", url: "https://www.floodpro.net/Login.aspx?ReturnUrl=%2f" },
+    { title: "Old Dominion Flood (New)", url: "https://ngm.agent.odysseynext.com/login" },
+    { title: "Olympus Insurance", url: "https://pm.oiconnect.com/" },
+    { title: "Orchid Insurance", url: "https://orchidinsurance.com/" },
+    { title: "Orchid Insurance", url: "https://connect.orchidinsurance.com/Logon.aspx" },
+    { title: "Peoples Trust Insurance", url: "https://peoplestrust55.live.ptsapp.com/" },
+    { title: "Personal Umbrella", url: "http://www.personalumbrella.com/" },
+    { title: "Prepared Insurance Company", url: "http://www.preparedins.net/" },
+    { title: "Prime Rate Billing", url: "https://www.primerateonline.net/webapps/prlogin.pgm?task=customer" },
+    { title: "Progressive Insurance", url: "https://www.foragentsonly.com/" },
+    { title: "Property Appraiser - All Counties", url: "https://floridarevenue.com/property/Pages/LocalOfficials.aspx" },
+    { title: "Property Appraiser - Brevard", url: "http://www.brevardpropertyappraiser.com/" },
+    { title: "Property Appraiser - Broward", url: "http://www.bcpa.net/" },
+    { title: "Property Appraiser - Duval", url: "https://paopropertysearch.coj.net/Basic/Search.aspx" },
+    { title: "Property Appraiser - Flagler", url: "http://flaglerpa.com/" },
+    { title: "Property Appraiser - Lake", url: "http://www.lakecopropappr.com/" },
+    { title: "Property Appraiser - Orange", url: "http://www.ocpafl.org/" },
+    { title: "Property Appraiser - Osceola", url: "http://www.property-appraiser.org/" },
+    { title: "Property Appraiser - Polk", url: "http://www.polkpa.org/" },
+    { title: "Property Appraiser - Seminole", url: "https://www.scpafl.org/" },
+    { title: "Property Appraiser - Volusia", url: "http://publicaccess.vcgov.org/volusia/search/commonsearch.aspx?mode=realprop" },
+    { title: "PURE High Value Homeowners Insurance", url: "http://www.pureinsurance.com/agent_login" },
+    { title: "Right Signature", url: "https://rightsignature.com/login" },
+    { title: "RiskMeter.com", url: "http://www.riskmeter.com/RiskMeter/index.html" },
+    { title: "RLI Corp Portal", url: "https://myportal.rlicorp.com/" },
+    { title: "Royal Palm Insurance", url: "https://www.royalpalminsurance.com/agents.php" },
+    { title: "SAFECO Plaza Online", url: "https://safesite.safeco.com/dpec/signin.asp?OriginalURL=/safeconow/personal_insurance/" },
+    { title: "Safepoint Insurance", url: "http://www.safepointdc.com/Policy/default.aspx" },
+    { title: "Safeway Insurance", url: "https://www.safewayinsurance.com/AgentPortal/default.aspx" },
+    { title: "SageSure", url: "https://agents.sagesure.com/login.html" },
+    { title: "Sawgrass Mutual", url: "http://www.sawgrassmutual.org/" },
+    { title: "Security First", url: "https://agents.securityfirstflorida.com/" },
+    { title: "SIU, Inc.", url: "http://www.siuins.com/sicweb/Default.aspx" },
+    { title: "Slide", url: "https://www.slideinsagents.com/Main/PISignIn.aspx?ReturnUrl=PIMain.aspx" },
+    { title: "Southern Fidelity Insurance Company", url: "http://www.southernfidelityins.com/" },
+    { title: "Southern Oak Insurance Company", url: "https://soi.policyport.com/wps/portal/southernoak" },
+    { title: "St. James - EMGA", url: "http://emgains.com/" },
+    { title: "St. Johns – Insurance for Florida home and condominium owners", url: "http://www.stjohnsinsurance.com/" },
+    { title: "Star Casualty", url: "http://www.starcasualty.com/is/root/index.cfm" },
+    { title: "State Auto's AgentSite", url: "https://echannel.stateauto.com/agentsite/default.asp" },
+    { title: "Sunshine State Insurance", url: "https://ssiprdwa.csc-fsg.com/login/" },
+    { title: "Tailrow Insurance Exchange", url: "https://tailrow.com/" },
+    { title: "Tapco Underwriters", url: "https://secure.gotapco.com/Login/Login?ReturnUrl=%2FHome%2FOnlineQuoting" },
+    { title: "The Colonial Group", url: "http://www.thecolonialgroup.com/" },
+    { title: "Titan Insurance", url: "https://www.victoriainsurance.com/Index.do" },
+    { title: "Total CSR", url: "https://login.totalcsr.com/" },
+    { title: "Tower Hill Insurance - Oasis", url: "http://oasis.thig.com/" },
+    { title: "Travelers Logon Page", url: "https://logon.travelers.com/" },
+    { title: "Tropical Satellite Imagery", url: "http://www.ssd.noaa.gov/PS/TROP/trop-atl.html" },
+    { title: "Typtap - Flood", url: "https://app.typtap.com/agency/agents/login" },
+    { title: "Typtap - Homeowners", url: "https://agency.hciharmony.com/login" },
+    { title: "Unique ID Driver's License Calculator Florida", url: "http://www.highprogrammer.com/cgi-bin/uniqueid/dl_fl" },
+    { title: "United Healthcare", url: "https://www.uhcexpress.com/uhc/cm_quote/login/layout.jhtml?portalKey=//broker.uhcexpress.channelpoint.com&app=CM_quote&hrAdminApp=CM_quote&family=uhc&locale=en" },
+    { title: "United Insurance", url: "https://www.upcic.com/upchome/" },
+    { title: "United Property & Casualty", url: "http://www.upcinsurance.com/" },
+    { title: "Universal North America", url: "http://www.universalnorthamerica.com/" },
+    { title: "Universal Property & Casualty", url: "https://atlasbridge.com/" },
+    { title: "UPS Speedship.com Shipping Manager", url: "https://sihleinsurance.sharepoint.com/fedex.aspx" },
+    { title: "US Insurance", url: "http://usis.recprodins.com/" },
+    { title: "USLI", url: "http://www.usli.com/" },
+    { title: "USPS Post Office", url: "http://www.usps.com/" },
+    { title: "Vault Insurance", url: "https://connect.vault.insurance/" },
+    { title: "Velocify - Login", url: "https://lm.velocify.com/" },
+    { title: "Velocity", url: "https://policy.velocityrisk.com/login.aspx?ReturnUrl=%2f" },
+    { title: "Velocity Flex", url: "https://gateway.velocityrisk.com/" },
+    { title: "Virtual Underwriter System", url: "https://www.virtualunderwriter.net/index.cfm" },
+    { title: "West Point Underwriters", url: "http://www.westpointuw.com/default.asp" },
+    { title: "Weston Insurance Management", url: "http://weston-ins.com/AgentsHome.aspx" },
+    { title: "Wright Flood", url: "https://www.wrightflood.net/Portal/" },
+    { title: "Z Place Holder - Update When New Site is Needed", url: "http://www.sihle.com/" },
+    { title: "Zillow Home Search", url: "http://www.zillow.com/" }
+];
+
+        
+        // Function to load the links into the page dynamically
+        function loadLinks() {
+            let linkList = document.getElementById('linkList');
+            linkList.innerHTML = ""; // Clear existing list
+            
+            links.forEach(link => {
+                let li = document.createElement('li');
+                let a = document.createElement('a');
+                a.href = link.url;
+                a.target = "_blank";
+                a.textContent = link.title;
+                li.appendChild(a);
+                linkList.appendChild(li);
+            });
+        }
+        
+        // Function to filter links dynamically as user types
+        function filterLinks() {
+            let input = document.getElementById('searchBar').value.toLowerCase();
+            let listItems = document.getElementById('linkList').getElementsByTagName('li');
+            
+            for (let i = 0; i < listItems.length; i++) {
+                let text = listItems[i].textContent || listItems[i].innerText;
+                listItems[i].style.display = text.toLowerCase().includes(input) ? '' : 'none';
+            }
+        }
+        
+        // Load links when the page loads
+        window.onload = loadLinks;
+    </script>
+</head>
+<body>
+        <!-- Title above the search bar -->
+    <h2 id="linksTitle">Website Links</h2>
+    
+    <!-- Search input field with event to trigger filtering -->
+    <input type="text" id="searchBar" onkeyup="filterLinks()" placeholder="Search links...">
+    
+    <!-- Unordered list to display links -->
+    <ul id="linkList"></ul>
+</body>
+</html>
